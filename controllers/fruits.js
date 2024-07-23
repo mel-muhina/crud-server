@@ -27,6 +27,7 @@ const show = async (req, res) => {
 const create = async (req, res) => {
     const data = req.body;
     try {
+        
         // 1. Call a method from the model 
         const newFruit = await Fruit.create(data)
         // 2. Send a response with a status code and the new element

@@ -26,14 +26,19 @@ class Fruit {
 
     static create(data) {
         const newFruit = data
+        const checkFruit = fruits.find((fruit) => fruit.name.toLowerCase() == newFruit.name);
 
-        newFruit.id = fruits.length + 1
-
-        console.log(newFruit)
-        fruits.push(newFruit)
-
-        return new Fruit(newFruit)
+        if (checkFruit) {
+            newFruit.id = fruits.length + 1 // We wont need this in databases, but it adds an id to each fruit as the json file has it
+            fruits.push(newFruit)
+    
+            return new Fruit(newFruit)
+        } else {
+              throw "The fruit already exists."
+        }
     }
+
+       
 
     update(data) {
         const updatedFruit = fruits.find(fruit => fruit.name.toLowerCase() == this.name.toLowerCase());
